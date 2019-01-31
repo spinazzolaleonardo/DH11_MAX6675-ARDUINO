@@ -14,7 +14,8 @@ unsigned long old_millis = 0;
 unsigned long delta = 2000;
 float temp;
 MAX6675 thermocouple(thermoCLK, thermoCS, thermoDO);
-
+int vccPin = 3;
+int gndPin = 2;
 DHT dht(DHTPIN, DHTTYPE);
 
 void setup() {
@@ -22,7 +23,8 @@ void setup() {
   pinMode (12, OUTPUT);
   Serial.begin(9600);
   Serial.println(F("DHT_MAX6675"));
-  
+  pinMode(vccPin, OUTPUT); digitalWrite(vccPin, HIGH);
+  pinMode(gndPin, OUTPUT); digitalWrite(gndPin, LOW);
 
   Serial.println("MAX6675&DHT11 test");
 
